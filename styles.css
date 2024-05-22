@@ -6,17 +6,30 @@
     Final Project Proposal CSS.
 */
 body {
-    font-family: "Space Mono", Helvetica, sans-serif;
-    color: white;
-    margin: 0;
     background-color: black;
 }
 
-body, main, #start-view, .listing, #login-view, #contact-view {
-    display: flex;
-    flex-direction: column;
+body, button {
+    font-family: "Space Mono", Helvetica, sans-serif;
 }
 
+body, button, a{
+    color: white;
+}
+
+body, article ul {
+    margin: 0;
+}
+
+body, main, #start-view, .listing, #login-view, #contact-view, #cart-view, 
+.nameinput-container, .input-container, .check-container, .cart-listing,
+header, #listing-space, .cart-listing > div, #product-view, .description-container {
+    display: flex;
+}
+
+body, main, #start-view, .listing, #login-view, #contact-view, #cart-view {
+    flex-direction: column;
+}
 
 #start-view {
     justify-content: flex-end;
@@ -31,14 +44,12 @@ h2 {
 }
 
 .nameinput-container {
-    display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
 .input-container {
     width: 300px;
-    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 15px;
@@ -47,7 +58,6 @@ h2 {
 
 .check-container {
     width: 150px;
-    display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 15px;
@@ -59,19 +69,24 @@ h2 {
     height: 100px;
 }
 
-#login-view, #contact-view {
+#login-view, #contact-view, #cart-view {
     align-items: center;
     height: 100vh;
 }
 
+.cart-listing {
+    width: 60%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
 header {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 #listing-space {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -103,8 +118,9 @@ h1 {
     height: 90vh;
 }
 
-#log-in {
-    margin: 20px;
+#login-button, #cart-button, #start-button, #listings-button {
+    margin-top: 20px;
+    margin-left: 10px;
     width: 100px;
     height: 50px;
 
@@ -120,13 +136,12 @@ button:hover {
 }
 
 button {
-    font-family: "Space Mono", Helvetica, sans-serif;
-    color: white;
     background-color: transparent;
     border: 0.1em solid white;
+    cursor: pointer;
 }
 
-.input-container > button {
+.input-container > button, #purchase-button {
     margin-top: 20px;
     padding: 10px;
 }
@@ -156,7 +171,6 @@ h3 {
 
 article ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
 }
 
@@ -164,13 +178,13 @@ article li {
     text-align: center;
 }
 
-.hidden, #listing-view.hidden, #start-view.hidden, #login-view.hidden, #contact-view.hidden{
+.hidden, #listing-view.hidden, #start-view.hidden, #login-view.hidden,
+#contact-view.hidden, #cart-view.hidden {
     display: none;
 }
 
-a{
+a {
     text-decoration: none;
-    color: white;
 }
 
 #contact {
@@ -182,11 +196,22 @@ a{
 }
 
 
+.cart-listing h3 {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cart-listing > div {
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0.1em solid white;
+    width: 85%;
+}
+
 /* Product */
 #product-view {
-    display: flex;
     flex-direction: column;
-
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -212,13 +237,12 @@ a{
 }
 
 .description-container {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#purchase-button {
+#addcart-button {
     padding: 20px;
     font-size: 20pt;
 }

@@ -22,7 +22,13 @@
   <body>
     <header>
         <h1> CELESTIAL REALTORS </h1>
-        <button id="log-in"> LOG IN </button>
+        <div>
+            <button id="start-button"> HOME </button>
+            <button id="listings-button"> LISTINGS </button>
+            <button id="login-button"> LOG IN </button>
+            <button id="cart-button"> CART </button>
+        </div>
+        
     </header>
     <main>
         <section id="start-view">
@@ -41,15 +47,15 @@
             <div class="nameinput-container">
                 <div class="check-container">
                     <input type="checkbox" id="planets" name="planets" checked/>
-                    <label for="scales">PLANETS</label>
+                    <label for="planets">PLANETS</label>
                 </div>
                 <div class="check-container">
                     <input type="checkbox" id="moons" name="moons" checked/>
-                    <label for="scales">MOONS</label>
+                    <label for="moons">MOONS</label>
                 </div>
                 <div class="check-container">
                     <input type="checkbox" id="stars" name="stars" checked/>
-                    <label for="scales">STARS</label>
+                    <label for="stars">STARS</label>
                 </div>
             </div>            
             <!-- 
@@ -168,7 +174,6 @@
                 <button id="signup-button"> SIGN UP </button>
                 <button id="login-button"> LOG IN </button>
             </div>
-            <button id="loginreturn-button"> RETURN HOME </button>
         </section>
         <section id="contact-view" class="hidden">
             <!--
@@ -187,7 +192,24 @@
                 <input type="text" id="message" name="message" required minlength="1" 
                 maxlength="70" size="70"/>
             </div>
-            <button id="contactreturn-button"> SUBMIT AND RETURN </button>
+            <button id="contactsubmit-button"> SUBMIT</button>
+        </section>
+        <section id="cart-view" class="hidden">
+            <!-- Example placeholder cart items -->
+            <h2> ITEMS IN CART </h2>
+            <article class="cart-listing">
+                <div>
+                    <h3>Europa</h3>
+                    <h3> $100,000,000,000</h3>
+                </div>
+                <button class="removecart-button">
+                    REMOVE
+                </button>
+            </article>
+
+            <button id="purchase-button"> PURCHASE </button>
+                
+
         </section>
     </main>
     <footer>

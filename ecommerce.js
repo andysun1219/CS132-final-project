@@ -1,33 +1,36 @@
 /**
  * @author Andy Sun
  * Ecommerce JavaScript
- * Initial JavaScript for project proposal.
+ * Initial JavaScript for project proposal to change views.
  */
 (function() {
     "use strict";
 
     function init() {
       const seeListingsButton = qs("#listing-view-button");
-      const logInButton = qs("#log-in");
-      const loginReturnHomeButton = qs("#loginreturn-button");
+      const logInButton = qs("#login-button");
       const contactUs = qs("#contact");
-      const contactReturnHomebutton = qs("#contactreturn-button");
+      const cartButton = qs("#cart-button");
+      const homeButton = qs("#start-button");
+      const listingsButton = qs("#listings-button");
       seeListingsButton.addEventListener("click", () =>{
         displaySection("listing-view");
       })
       logInButton.addEventListener("click", () =>{
         displaySection("login-view");
       })
-      loginReturnHomeButton.addEventListener("click", () =>{
-        displaySection("start-view");
-      })
       contactUs.addEventListener("click", () =>{
         displaySection("contact-view");
       })
-      contactReturnHomebutton.addEventListener("click", () =>{
+      cartButton.addEventListener("click", () =>{
+        displaySection("cart-view");
+      })
+      homeButton.addEventListener("click", () =>{
         displaySection("start-view");
       })
-      
+      listingsButton.addEventListener("click", () =>{
+        displaySection("listing-view");
+      })
     }
 
     function displaySection(sectionId) {
