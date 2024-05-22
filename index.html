@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--
+  Author: Andy Sun
+  CS 132 Spring 2024
+  Date: 5/21/24
+
+  Final Project Proposal HTML page. Futuristic themed website enabling
+  users to view planets, stars, and moons to purchase.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="utils.js"></script>
+    <script defer src="ecommerce.js"></script>
+    <title> Celestial Realtors </title>
+  </head>
+  <body>
+    <header>
+        <h1> CELESTIAL REALTORS </h1>
+        <button id="log-in"> LOG IN </button>
+    </header>
+    <main>
+        <section id="start-view">
+
+            <h2> FIND YOUR NEW HOME</h2>
+            <button id = "listing-view-button"> See Current Listings </button>
+        </section>
+        <section id="listing-view" class="hidden">
+            <h2>
+                CURRENT AVAILABLE LISTINGS
+            </h2>
+            <!--
+                Will filter products with certain properties. The property is the
+                type of celestial body.
+            -->
+            <div class="nameinput-container">
+                <div class="check-container">
+                    <input type="checkbox" id="planets" name="planets" checked/>
+                    <label for="scales">PLANETS</label>
+                </div>
+                <div class="check-container">
+                    <input type="checkbox" id="moons" name="moons" checked/>
+                    <label for="scales">MOONS</label>
+                </div>
+                <div class="check-container">
+                    <input type="checkbox" id="stars" name="stars" checked/>
+                    <label for="scales">STARS</label>
+                </div>
+            </div>            
+            <!-- 
+                These are example listings with Place holder images and information.
+                Will be populated by data from GET endpoint in final product.
+
+                Currently, each of the products links to separate HTML page containing
+                an example single product page.
+                Once the backend is implemented, I am considering using
+                view toggling to display the appropiate single view product page
+                for each product.
+            -->
+            <div id="listing-space">
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Mars </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Planet </li>
+                            <li> Location: Solar System </li>
+                            <li> Price: $50 Billion </li>
+                        </ul>
+                    </article>
+                </a>
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Saturn </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Planet </li>
+                            <li> Location: Solar System </li>
+                            <li> Price: $10 Billion </li>
+                        </ul>
+                    </article>
+                </a>
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Europa </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Moon </li>
+                            <li> Location: Solar System </li>
+                            <li> Price: $100 Billion </li>
+                        </ul>
+                    </article>
+                </a>
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Proxima Centauri </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Star </li>
+                            <li> Location: Centaurus </li>
+                            <li> Price: $5 Trillion </li>
+                        </ul>
+                    </article>
+                </a>
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Io </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Moon </li>
+                            <li> Location: Solar System </li>
+                            <li> Price: $2 Billion </li>
+                        </ul>
+                    </article>
+                </a>
+                <a href="product.html">
+                    <article class="listing">
+                        <h3> Uranus </h3>
+                        <img src="imgs/mars.jpg" alt="Placeholder Image">
+                        <ul>
+                            <li> Type: Planet </li>
+                            <li> Location: Solar System </li>
+                            <li> Price: $20 Billion </li>
+                        </ul>
+                    </article>
+                </a>
+            </div>
+        </section>
+        <section id="login-view" class="hidden">
+            <!-- 
+                This h2 header will be extended to show a message when a user
+                succesfully signs up or logs in using a POST endpoint.
+            -->
+            <h2> MEMBER LOG IN </h2>
+            <div class="nameinput-container">
+                <div class="input-container">
+                    <label for="first-name">FIRST NAME</label>
+                    <input type="text" id="first-name" name="first-name" required minlength="1" 
+                    maxlength="20" size="20"/>
+                </div>
+                <div class="input-container">
+                    <label for="last-name">LAST NAME</label>
+                    <input type="text" id="last-name" name="last-name" required minlength="1" 
+                    maxlength="20" size="20"/>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" required minlength="1" 
+                maxlength="20" size="30"/>
+
+            </div>
+            <div class="input-container">
+                <label for="phone">PHONE NUMBER</label>
+                <input type="tel" id="phone" name="phone"/>
+            </div>
+            <div class="input-container">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required minlength="1" 
+                maxlength="20"/>
+            </div>
+            <div class="input-container">
+                <button id="signup-button"> SIGN UP </button>
+                <button id="login-button"> LOG IN </button>
+            </div>
+            <button id="loginreturn-button"> RETURN HOME </button>
+        </section>
+        <section id="contact-view" class="hidden">
+            <!--
+                When the backend is implemented, message will be accepted and stored.
+                Then, will be extended to notify user of invalid messages or if
+                message is received.
+            -->
+            <h2> CONNECT WITH US </h2>
+            <div class="input-container">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" required minlength="1" 
+                maxlength="20"/>
+            </div>
+            <div id="message-container" class="input-container">
+                <label for="message">COMMENTS</label>
+                <input type="text" id="message" name="message" required minlength="1" 
+                maxlength="70" size="70"/>
+            </div>
+            <button id="contactreturn-button"> SUBMIT AND RETURN </button>
+        </section>
+    </main>
+    <footer>
+       <p id="contact"> Contact Us </p>
+        Images From The National Aeronautics and Space Administration.
+    </footer>
+  </body>
+</html>

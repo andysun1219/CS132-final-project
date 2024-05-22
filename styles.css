@@ -1,0 +1,224 @@
+/*
+    Author: Andy Sun
+    CS 132 Spring 2024
+    Date: May 21, 2024
+    
+    Final Project Proposal CSS.
+*/
+body {
+    font-family: "Space Mono", Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+    background-color: black;
+}
+
+body, main, #start-view, .listing, #login-view, #contact-view {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#start-view {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 32pt;
+    margin-bottom: 10px;
+}
+
+.nameinput-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input-container {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+
+}
+
+.check-container {
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#message-container {
+    width: 600px;
+    height: 100px;
+}
+
+#login-view, #contact-view {
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#listing-space {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+header {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+footer {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+#start-view {
+    background-image: url("https://science.nasa.gov/wp-content/uploads/2023/04/makemakemoon100mile-jpg.webp?w=1280&format=webp");
+    background-size: cover;
+    height: 90vh;
+}
+
+#log-in {
+    margin: 20px;
+    width: 100px;
+    height: 50px;
+
+}
+
+#listing-view-button {
+    margin-bottom: 150px;
+    padding: 20px;
+}
+
+button:hover {
+    border: 0.2em solid white;
+}
+
+button {
+    font-family: "Space Mono", Helvetica, sans-serif;
+    color: white;
+    background-color: transparent;
+    border: 0.1em solid white;
+}
+
+.input-container > button {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#loginreturn-button, #contactreturn-button {
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.listing > img {
+    height: 30vh;
+}
+
+.listing {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0.1em solid white;
+}
+
+h3 {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+article ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+article li {
+    text-align: center;
+}
+
+.hidden, #listing-view.hidden, #start-view.hidden, #login-view.hidden, #contact-view.hidden{
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#contact {
+    text-decoration: underline;
+}
+
+#contact:hover {
+    cursor: pointer;
+}
+
+
+/* Product */
+#product-view {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#home-button {
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+}
+
+#product-view img {
+    width: 50%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.image-container {
+    text-align: center;
+}
+
+#product-view > ul {
+    list-style-type: none;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#purchase-button {
+    padding: 20px;
+    font-size: 20pt;
+}
