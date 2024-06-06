@@ -22,13 +22,14 @@
   <body>
     <header>
         <h1> CELESTIAL REALTORS </h1>
-        <div>
-            <button id="start-button"> HOME </button>
-            <button id="listings-button"> LISTINGS </button>
-            <button id="login-button"> LOG IN </button>
-            <button id="cart-button"> CART </button>
-        </div>
-        
+        <nav>
+            <ul>
+                <li id="start-button" class="nav-button">HOME</li>
+                <li id="listings-button" class="nav-button">LISTINGS</li>
+                <li id="login-button" class="nav-button">LOG IN</li>
+                <li id="cart-button" class="nav-button">CART</li>
+            </ul>
+        </nav>
     </header>
     <main>
         <section id="start-view">
@@ -69,72 +70,31 @@
                 for each product.
             -->
             <div id="listing-space">
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Mars </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Planet </li>
-                            <li> Location: Solar System </li>
-                            <li> Price: $50 Billion </li>
-                        </ul>
-                    </article>
-                </a>
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Saturn </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Planet </li>
-                            <li> Location: Solar System </li>
-                            <li> Price: $10 Billion </li>
-                        </ul>
-                    </article>
-                </a>
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Europa </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Moon </li>
-                            <li> Location: Solar System </li>
-                            <li> Price: $100 Billion </li>
-                        </ul>
-                    </article>
-                </a>
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Proxima Centauri </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Star </li>
-                            <li> Location: Centaurus </li>
-                            <li> Price: $5 Trillion </li>
-                        </ul>
-                    </article>
-                </a>
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Io </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Moon </li>
-                            <li> Location: Solar System </li>
-                            <li> Price: $2 Billion </li>
-                        </ul>
-                    </article>
-                </a>
-                <a href="product.html">
-                    <article class="listing">
-                        <h3> Uranus </h3>
-                        <img src="imgs/mars.jpg" alt="Placeholder Image">
-                        <ul>
-                            <li> Type: Planet </li>
-                            <li> Location: Solar System </li>
-                            <li> Price: $20 Billion </li>
-                        </ul>
-                    </article>
-                </a>
+                <article class="listing">
+                    <h3> Mars </h3>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg" alt="Placeholder Image">
+                    <ul>
+                        <li> Type: Planet </li>
+                        <li> Price: $50 Billion </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section id="product-view" class="hidden">
+            <!--
+              Currently using a placeholder image and description to display website style.
+              When the backend is implemented, the data will be used to populate the
+              image and description.
+            -->
+            <img src="imgs/mars.jpg">
+            <div class="description-container">
+                <ul>
+                    <li> Type: Planet </li>
+                    <li> Location: Solar System </li>
+                    <li> Price: $50 Billion </li>
+                    <li> Placeholder Description </li>
+                </ul>
+                <button id="addcart-button">ADD TO CART</button>
             </div>
         </section>
         <section id="login-view" class="hidden">
@@ -170,10 +130,9 @@
                 <input type="password" id="password" name="password" required minlength="1" 
                 maxlength="20"/>
             </div>
-            <div class="input-container">
-                <button id="signup-button"> SIGN UP </button>
-                <button id="login-button"> LOG IN </button>
-            </div>
+            <button id="signup-button"> SIGN UP </button>
+
+
         </section>
         <section id="contact-view" class="hidden">
             <!--
