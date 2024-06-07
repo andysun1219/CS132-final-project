@@ -23,7 +23,7 @@ body, article ul {
 
 body, main, #start-view, .listing, #login-view, #contact-view,
 .nameinput-container, .input-container, .check-container,
-header, #listing-space, #product-view, .description-container {
+header, #listing-space, #product-view, #description-container {
     display: flex;
 }
 
@@ -35,7 +35,7 @@ body, main, #start-view, .listing, #login-view, #contact-view, #product-view {
     justify-content: flex-end;
 }
 
-header, #start-view, #login-view, #contact-view, #listing-space, .description-container {
+header, #start-view, #login-view, #contact-view, #listing-space, #description-container {
     align-items: center;
 }
 
@@ -47,7 +47,7 @@ h2, .listing {
     margin-bottom: 10px;
 }
 
-h2, footer, h3, article li {
+h2, footer, h3, article li, #purchase-button {
     text-align: center;
 }
 
@@ -89,9 +89,7 @@ h2, footer, h3, article li {
     height: 100vh;
 }
 
-
-
-header, .description-container, .listing {
+header, #description-container, .listing {
     justify-content: space-between;
 }
 
@@ -143,7 +141,7 @@ button {
     background-color: transparent;
 }
 
-.input-container > button, #purchase-button {
+.input-container > button {
     padding: 10px;
 }
 
@@ -163,7 +161,7 @@ button {
     cursor: pointer;
 }
 
-#addcart-button {
+#purchase-button {
     width: 150px;
     font-size: 15pt;
     margin-right: 20px;
@@ -195,7 +193,7 @@ button, #contact:hover {
     cursor: pointer;
 }
 
-.listing, button {
+.listing, button, #purchase-button {
     border: 0.1em solid white;
 }
 
@@ -217,7 +215,7 @@ button, #contact:hover {
     max-width: 70%;
 }
 
-.listing, #addcart-button, #listing-view-button {
+.listing, #purchase-button, #listing-view-button, #sold-out {
     padding: 20px;
 }
 

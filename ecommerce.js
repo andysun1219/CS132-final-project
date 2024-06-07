@@ -77,7 +77,7 @@
       const categories = data.categories;
       for (const [category, products] of Object.entries(categories)) {
         for (const [key, product] of Object.entries(products)) {
-          listingSpace.append(genProduct(category, product, key));
+          listingSpace.appendChild(genProduct(category, product, key));
         }
       }
     }
@@ -97,11 +97,11 @@
       typeLi.textContent = "Type: " + category[0].toUpperCase() + category.slice(1);
       priceLi.textContent = "Price: " + product.price;
 
-      ul.append(typeLi);
-      ul.append(priceLi);
-      newListing.append(newH3);
-      newListing.append(img);
-      newListing.append(ul);
+      ul.appendChild(typeLi);
+      ul.appendChild(priceLi);
+      newListing.appendChild(newH3);
+      newListing.appendChild(img);
+      newListing.appendChild(ul);
       newListing.addEventListener("click", () => {
         fetchSingleProduct(category, key);
       });
@@ -115,13 +115,13 @@
         resp = checkStatus(resp);
         const data = await resp.json();
         qs("#error-display").classList.add("hidden");
-        genSingleProduct(data, category);
+        genSingleProduct(data, category, key);
       } catch (err) {
         handleError(err);
       }
     }
 
-    function genSingleProduct(data, category) {
+    function genSingleProduct(data, category, key) {
       const productView = qs("#product-view");
       let imageContainer = gen("div");
       let img = gen("img");
@@ -134,13 +134,14 @@
       let prop1 = gen("li");
       let prop2 = gen("li");
       let prop3 = gen("li");
-      let addCardButton = gen("button");
+      let purchaseButton;
+      
 
       productView.innerHTML = "";
 
       img.src = data.image;
       img.alt = data.name;
-      productView.append(img)
+      productView.appendChild(img)
 
       name.textContent = "Name: " + data.name;
       type.textContent = "Type: " + category[0].toUpperCase() + category.slice(1);
@@ -157,28 +158,40 @@
       }
       
       description.textContent = data.description;
+      if (data["in-stock"]) {
+        purchaseButton = gen("button");
+        purchaseButton.id = "purchase-button";
+        purchaseButton.textContent = "PURCHASE";
 
-      addCardButton.id = "addcart-button";
-      addCardButton.textContent = "ADD TO CART";
+        purchaseButton.addEventListener("click", function(evt) {
+          evt.preventDefault();
+          submitPurchase(category, key);
+        })
+      }
+      else {
+        purchaseButton = gen("div");
+        purchaseButton.id = "purchase-button";
+        purchaseButton.textContent = "SOLD OUT!";
+      }
 
-      ul.append(name);
-      ul.append(type);
+      ul.appendChild(name);
+      ul.appendChild(type);
       if (category == "moons") {
         let orbits = gen("li");
         orbits.textContent = "Orbits: " + data.orbits;
-        ul.append(orbits);
+        ul.appendChild(orbits);
       }
-      ul.append(price);
-      ul.append(prop1);
-      ul.append(prop2);
-      ul.append(prop3);
-      ul.append(description);
-      descriptionContainer.append(ul);
-      descriptionContainer.append(addCardButton);
-      descriptionContainer.classList.add("description-container");
+      ul.appendChild(price);
+      ul.appendChild(prop1);
+      ul.appendChild(prop2);
+      ul.appendChild(prop3);
+      ul.appendChild(description);
+      descriptionContainer.appendChild(ul);
+      descriptionContainer.appendChild(purchaseButton);
+      descriptionContainer.id = "description-container";
 
-      productView.append(imageContainer);
-      productView.append(descriptionContainer);
+      productView.appendChild(imageContainer);
+      productView.appendChild(descriptionContainer);
       displaySection("product-view");
     }
 
@@ -206,7 +219,7 @@
     function addFilterProducts(data, category) {
       const listingSpace = qs("#listing-space");
       for (const [key, product] of Object.entries(data)) {
-        listingSpace.append(genProduct(category, product, key));
+        listingSpace.appendChild(genProduct(category, product, key));
       }
     }
 
@@ -286,6 +299,33 @@
       } catch (err) {
         handleError(err);
       }
+    }
+
+    async function submitPurchase(category, product) {
+      const params = new FormData();
+      const url = BASE_URL + "instock";
+      qs("#error-display").classList.add("hidden");
+      params.append("category", category);
+      params.append("product", product);
+      try {
+        let resp = await fetch(url, { method : "POST", body : params });
+        checkStatus(resp);
+        resp = await resp.text();
+        makePurchased();
+      } catch (err) {
+        handleError(err);
+      }
+    }
+
+    function makePurchased() {
+      const purchaseButton = qs("#purchase-button");
+      const descriptionContainer = qs("#description-container");
+      descriptionContainer.removeChild(purchaseButton);
+
+      let newDiv = gen("div");
+      newDiv.id = "purchase-button";
+      newDiv.textContent = "SOLD OUT!";
+      descriptionContainer.appendChild(newDiv);
     }
 
     /**
