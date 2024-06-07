@@ -4,17 +4,17 @@
   CS 132 Spring 2024
   Date: 5/21/24
 
-  Final Project Proposal HTML page. Futuristic themed website enabling
+  Final Project HTML page. Futuristic themed website enabling
   users to view planets, stars, and moons to purchase.
 -->
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
     <script src="utils.js"></script>
     <script defer src="ecommerce.js"></script>
     <title>Celestial Realtors</title>
@@ -40,39 +40,26 @@
             <h2>
                 CURRENT AVAILABLE LISTINGS
             </h2>
-            <!--
-                Will filter products with certain properties. The property is the
-                type of celestial body.
-            -->
             <div class="nameinput-container">
                 <div class="check-container">
-                    <input type="checkbox" id="planets" name="planets" checked/>
+                    <input type="checkbox" id="planets" name="planets" checked>
                     <label for="planets">PLANETS</label>
                 </div>
                 <div class="check-container">
-                    <input type="checkbox" id="moons" name="moons" checked/>
+                    <input type="checkbox" id="moons" name="moons" checked>
                     <label for="moons">MOONS</label>
                 </div>
                 <div class="check-container">
-                    <input type="checkbox" id="stars" name="stars" checked/>
+                    <input type="checkbox" id="stars" name="stars" checked>
                     <label for="stars">STARS</label>
                 </div>
                 <button id="filter-button"> FILTER </button>
             </div>            
-            <!-- 
-                These are example listings with Place holder images and information.
-                Will be populated by data from GET endpoint in final product.
-
-                Currently, each of the products links to separate HTML page containing
-                an example single product page.
-                Once the backend is implemented, I am considering using
-                view toggling to display the appropiate single view product page
-                for each product.
-            -->
             <div id="listing-space">
                 <article class="listing">
                     <h3> Mars </h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg" alt="Placeholder Image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg"
+                    alt="Placeholder Image">
                     <ul>
                         <li> Type: Planet </li>
                         <li> Price: $50 Billion </li>
@@ -81,12 +68,8 @@
             </div>
         </section>
         <section id="product-view" class="hidden">
-            <!--
-              Currently using a placeholder image and description to display website style.
-              When the backend is implemented, the data will be used to populate the
-              image and description.
-            -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg"
+            alt="Placeholder">
             <div id="description-container">
                 <ul>
                     <li> Type: Planet </li>
@@ -98,50 +81,41 @@
             </div>
         </section>
         <section id="login-view" class="hidden">
-            <!-- 
-                This h2 header will be extended to show a message when a user
-                succesfully signs up or logs in using a POST endpoint.
-            -->
             <h2> MEMBER SIGN UP </h2>
             <div class="nameinput-container">
                 <div class="input-container">
                     <label for="first-name">FIRST NAME</label>
                     <input type="text" id="first-name" name="first-name"
-                    pattern="[A-Z][a-z]+" size="20" required/>
+                    pattern="[A-Z][a-z]+" size="20" required>
                 </div>
                 <div class="input-container">
                     <label for="last-name">LAST NAME</label>
                     <input type="text" id="last-name" name="last-name"
-                    pattern="[A-Z][a-z]+" size="20" required/>
+                    pattern="[A-Z][a-z]+" size="20" required>
                 </div>
             </div>
             <div class="input-container">
                 <label for="email">EMAIL</label>
                 <input type="email" id="email" name="email" required
-                size="30"/>
+                size="30">
             </div>
             <div class="input-container">
                 <label for="phone">PHONE NUMBER</label>
-                <input type="tel" id="phone" name="phone" required/>
+                <input type="tel" id="phone" name="phone" required>
             </div>
 
             <button id="signup-button"> SIGN UP </button>
         </section>
         <section id="contact-view" class="hidden">
-            <!--
-                When the backend is implemented, message will be accepted and stored.
-                Then, will be extended to notify user of invalid messages or if
-                message is received.
-            -->
             <h2> CONNECT WITH US </h2>
             <div id="name-container" class="input-container">
                 <label for="name">FIRST AND LAST NAME</label>
                 <input type="text" id="name" name="name" required
-                    pattern="[A-Z][a-z]+ [A-Z][a-z]+"/>
+                    pattern="[A-Z][a-z]+ [A-Z][a-z]+">
             </div>
             <div id="message-container" class="input-container">
                 <label for="message">COMMENTS</label>
-                <textarea type="text" id="message" name="message" required
+                <textarea id="message" name="message" required
                 maxlength="70" cols="50"></textarea>
             </div>
             <button id="contactsubmit-button">SUBMIT</button>

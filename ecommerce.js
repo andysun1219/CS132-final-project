@@ -1,14 +1,25 @@
 /**
  * @author Andy Sun
  * Ecommerce JavaScript
- * Initial JavaScript for project proposal to change views.
+ * Javascript for CS 132 final project. Enables user to change views, view
+ * products from API, view a single product's details, filter specific categories
+ * of products, send feedback, become loyal customers, and make purchases.
  */
 (function() {
     "use strict";
 
     const BASE_URL = "http://localhost:8000/";
     const PRODUCT_URL = BASE_URL + "products";
+    const CATEGORY_URL = PRODUCT_URL + "/category/";
+    const COMMENT_URL = BASE_URL + "comments";
+    const CUSTOMER_URL = BASE_URL + "customer";
+    const INSTOCK_URL = BASE_URL + "instock";
 
+    /**
+     * Init Function. Adds event listeners to buttons in nav bar to enable
+     * navigation between views. Also adds event listeners to submit buttons
+     * to enable submitting forms.
+     */
     function init() {
       const seeListingsButton = qs("#listing-view-button");
       const logInButton = qs("#login-button");
@@ -48,6 +59,10 @@
       })
     }
 
+    /**
+     * Displays the passed in view and hides all other views.
+     * @param {string} sectionId - id of section to be displayed.
+     */
     function displaySection(sectionId) {
       qs("#error-display").classList.add("hidden");
       const displayed = qs("section:not(.hidden)");
@@ -56,6 +71,9 @@
       toDisplay.classList.remove("hidden");
     }
 
+    /**
+     * Fetches data for all products from API and calls addAllProducts.
+     */
     async function fetchAllProducts() {
       const url = PRODUCT_URL;
       try {
@@ -68,6 +86,11 @@
       }
     }
 
+    /**
+     * Processes data from fetchAllProducts and calls genProduct on each
+     * product.
+     * @param {Object} data - data from fetchAllProducts
+     */
     function addAllProducts(data) {
       const listingSpace = qs("#listing-space");
       qs("#planets").checked = true;
@@ -82,6 +105,14 @@
       }
     }
 
+    /**
+     * Given the data for a product, it creates a listing article for the product
+     * and returns the article.
+     * @param {string} category - category of product from addAllProducts
+     * @param {Object} product - data for product from addAllProducts
+     * @param {string} key - key for product from addAllProducts
+     * @returns 
+     */
     function genProduct(category, product, key) {
       let newListing = gen("article");
       let newH3 = gen("h3");
@@ -108,8 +139,13 @@
       return newListing;
     }
 
+    /**
+     * Fetches data for single from API and calls genSingleProduct.
+     * @param {string} category - category of product to be fetched from event listener
+     * @param {string} key - key of product to be fetched from event listener
+     */
     async function fetchSingleProduct(category, key) {
-      const url = PRODUCT_URL + "/category/" + category + "/product/" + key;
+      const url = CATEGORY_URL + category + "/product/" + key;
       try {
         let resp = await fetch(url);
         resp = checkStatus(resp);
@@ -121,6 +157,13 @@
       }
     }
 
+    /**
+     * Given the data for a particular product, generates the single product view
+     * and displays the view.
+     * @param {Object} data - data for single product from fetchSingleProduct
+     * @param {string} category - category for product from fetchSingleProduct
+     * @param {string} key - key for product from fetchSingleProduct
+     */
     function genSingleProduct(data, category, key) {
       const productView = qs("#product-view");
       let imageContainer = gen("div");
@@ -135,14 +178,10 @@
       let prop2 = gen("li");
       let prop3 = gen("li");
       let purchaseButton;
-      
-
       productView.innerHTML = "";
-
       img.src = data.image;
       img.alt = data.name;
       productView.appendChild(img)
-
       name.textContent = "Name: " + data.name;
       type.textContent = "Type: " + category[0].toUpperCase() + category.slice(1);
       price.textContent = "Price: " + data.price;
@@ -156,7 +195,6 @@
         prop2.textContent = "Volume: " + data.properties.volume;
         prop3.textContent = "Density: " + data.properties.density;
       }
-      
       description.textContent = data.description;
       if (data["in-stock"]) {
         purchaseButton = gen("button");
@@ -173,7 +211,6 @@
         purchaseButton.id = "purchase-button";
         purchaseButton.textContent = "SOLD OUT!";
       }
-
       ul.appendChild(name);
       ul.appendChild(type);
       if (category == "moons") {
@@ -189,12 +226,15 @@
       descriptionContainer.appendChild(ul);
       descriptionContainer.appendChild(purchaseButton);
       descriptionContainer.id = "description-container";
-
       productView.appendChild(imageContainer);
       productView.appendChild(descriptionContainer);
       displaySection("product-view");
     }
 
+    /**
+     * Calls fetchCategory for each category where the respective check box is
+     * checked.
+     */
     function populateFilterProducts() {
       const listingSpace = qs("#listing-space");
       listingSpace.innerHTML = "";
@@ -216,6 +256,12 @@
       }
     }
 
+    /**
+     * For each product in a category, calls genProduct on the data for
+     * the product.
+     * @param {*} data - data for a category from fetchCategory
+     * @param {*} category - category from fetchCategory
+     */
     function addFilterProducts(data, category) {
       const listingSpace = qs("#listing-space");
       for (const [key, product] of Object.entries(data)) {
@@ -223,8 +269,14 @@
       }
     }
 
+    /**
+     * For the given category, fetch product data for
+     * products within that category then call
+     * addFilterProducts.
+     * @param {string} category - category from populateFilterProducts
+     */
     async function fetchCategory(category) {
-      const url = PRODUCT_URL + "/category/" + category
+      const url = CATEGORY_URL + category
       try {
         let resp = await fetch(url);
         resp = checkStatus(resp);
@@ -236,6 +288,10 @@
       }
     }
 
+    /**
+     * Validates form data for the customer service view and then calls
+     * submitContact.
+     */
     function handleContact() {
       const name = qs("#name");
       const message = qs("#message");
@@ -249,9 +305,13 @@
       }
     }
 
+    /**
+     * POST request to send inputted form information from customer review view to
+     * backend.
+     */
     async function submitContact() {
       const params = new FormData();
-      const url = BASE_URL + "comments";
+      const url = COMMENT_URL;
       qs("#error-display").classList.add("hidden");
       params.append("name", qs("#name").value);
       params.append("comments", qs("#message").value);
@@ -266,6 +326,10 @@
       }
     }
 
+    /**
+     * Validates form data for the loyal customer view and then calls
+     * submitSignUp.
+     */
     function handleSignUp() {
       const firstname = qs("#first-name");
       const lastname = qs("#last-name");
@@ -282,9 +346,13 @@
       }
     }
 
+    /**
+     * POST request to send inputted form information from loyal customer sign up view to
+     * backend.
+     */
     async function submitSignUp() {
       const params = new FormData();
-      const url = BASE_URL + "customer";
+      const url = CUSTOMER_URL;
       qs("#error-display").classList.add("hidden");
       params.append("firstname", qs("#first-name").value);
       params.append("lastname", qs("#last-name").value);
@@ -301,9 +369,15 @@
       }
     }
 
+    /**
+     * POST request to send update item stock data in backend when a purchase 
+     * is made. Then, calls makePurchased.
+     * @param {string} category - category from event handler
+     * @param {string} product - product from event handler
+     */
     async function submitPurchase(category, product) {
       const params = new FormData();
-      const url = BASE_URL + "instock";
+      const url = INSTOCK_URL;
       qs("#error-display").classList.add("hidden");
       params.append("category", category);
       params.append("product", product);
@@ -317,6 +391,10 @@
       }
     }
 
+    /**
+     * When a product is purchased and no longer in stock, removes the purchase
+     * button and displays that the item is no longer able to be purchased.
+     */
     function makePurchased() {
       const purchaseButton = qs("#purchase-button");
       const descriptionContainer = qs("#description-container");
