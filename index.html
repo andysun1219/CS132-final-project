@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="utils.js"></script>
     <script defer src="ecommerce.js"></script>
-    <title> Celestial Realtors </title>
+    <title>Celestial Realtors</title>
   </head>
   <body>
     <header>
@@ -26,14 +26,13 @@
             <ul>
                 <li id="start-button" class="nav-button">HOME</li>
                 <li id="listings-button" class="nav-button">LISTINGS</li>
-                <li id="login-button" class="nav-button">LOG IN</li>
-                <li id="cart-button" class="nav-button">CART</li>
+                <li id="login-button" class="nav-button">SIGN UP</li>
             </ul>
         </nav>
     </header>
     <main>
+        <section id="error-display" class="hidden">Error!</section>
         <section id="start-view">
-
             <h2> FIND YOUR NEW HOME</h2>
             <button id = "listing-view-button"> See Current Listings </button>
         </section>
@@ -58,6 +57,7 @@
                     <input type="checkbox" id="stars" name="stars" checked/>
                     <label for="stars">STARS</label>
                 </div>
+                <button id="filter-button"> FILTER </button>
             </div>            
             <!-- 
                 These are example listings with Place holder images and information.
@@ -86,7 +86,7 @@
               When the backend is implemented, the data will be used to populate the
               image and description.
             -->
-            <img src="imgs/mars.jpg">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/2880px-Saturn_during_Equinox.jpg">
             <div class="description-container">
                 <ul>
                     <li> Type: Planet </li>
@@ -102,34 +102,29 @@
                 This h2 header will be extended to show a message when a user
                 succesfully signs up or logs in using a POST endpoint.
             -->
-            <h2> MEMBER LOG IN </h2>
+            <h2> MEMBER SIGN UP </h2>
             <div class="nameinput-container">
                 <div class="input-container">
                     <label for="first-name">FIRST NAME</label>
-                    <input type="text" id="first-name" name="first-name" required minlength="1" 
-                    maxlength="20" size="20"/>
+                    <input type="text" id="first-name" name="first-name"
+                    pattern="[A-Z][a-z]+" size="20" required/>
                 </div>
                 <div class="input-container">
                     <label for="last-name">LAST NAME</label>
-                    <input type="text" id="last-name" name="last-name" required minlength="1" 
-                    maxlength="20" size="20"/>
+                    <input type="text" id="last-name" name="last-name"
+                    pattern="[A-Z][a-z]+" size="20" required/>
                 </div>
             </div>
             <div class="input-container">
                 <label for="email">EMAIL</label>
-                <input type="email" id="email" name="email" required minlength="1" 
-                maxlength="20" size="30"/>
-
+                <input type="email" id="email" name="email" required
+                size="30"/>
             </div>
             <div class="input-container">
                 <label for="phone">PHONE NUMBER</label>
-                <input type="tel" id="phone" name="phone"/>
+                <input type="tel" id="phone" name="phone" required/>
             </div>
-            <div class="input-container">
-                <label for="password">PASSWORD</label>
-                <input type="password" id="password" name="password" required minlength="1" 
-                maxlength="20"/>
-            </div>
+
             <button id="signup-button"> SIGN UP </button>
 
 
@@ -141,39 +136,22 @@
                 message is received.
             -->
             <h2> CONNECT WITH US </h2>
-            <div class="input-container">
-                <label for="name">NAME</label>
-                <input type="text" id="name" name="name" required minlength="1" 
-                maxlength="20"/>
+            <div id="name-container" class="input-container">
+                <label for="name">FIRST AND LAST NAME</label>
+                <input type="text" id="name" name="name" required
+                    pattern="[A-Z][a-z]+ [A-Z][a-z]+"/>
             </div>
             <div id="message-container" class="input-container">
                 <label for="message">COMMENTS</label>
-                <input type="text" id="message" name="message" required minlength="1" 
-                maxlength="70" size="70"/>
+                <textarea type="text" id="message" name="message" required
+                maxlength="70" cols="50"></textarea>
             </div>
-            <button id="contactsubmit-button"> SUBMIT</button>
-        </section>
-        <section id="cart-view" class="hidden">
-            <!-- Example placeholder cart items -->
-            <h2> ITEMS IN CART </h2>
-            <article class="cart-listing">
-                <div>
-                    <h3>Europa</h3>
-                    <h3> $100,000,000,000</h3>
-                </div>
-                <button class="removecart-button">
-                    REMOVE
-                </button>
-            </article>
-
-            <button id="purchase-button"> PURCHASE </button>
-                
-
+            <button id="contactsubmit-button">SUBMIT</button>
         </section>
     </main>
     <footer>
        <p id="contact"> Contact Us </p>
-        Images From The National Aeronautics and Space Administration.
+        Images From Wikimedia.
     </footer>
   </body>
 </html>

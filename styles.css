@@ -21,13 +21,13 @@ body, article ul {
     margin: 0;
 }
 
-body, main, #start-view, .listing, #login-view, #contact-view, #cart-view, 
-.nameinput-container, .input-container, .check-container, .cart-listing,
-header, #listing-space, .cart-listing > div, #product-view, .description-container {
+body, main, #start-view, .listing, #login-view, #contact-view,
+.nameinput-container, .input-container, .check-container,
+header, #listing-space, #product-view, .description-container {
     display: flex;
 }
 
-body, main, #start-view, .listing, #login-view, #contact-view, #cart-view, #product-view {
+body, main, #start-view, .listing, #login-view, #contact-view, #product-view {
     flex-direction: column;
 }
 
@@ -35,7 +35,7 @@ body, main, #start-view, .listing, #login-view, #contact-view, #cart-view, #prod
     justify-content: flex-end;
 }
 
-header, #start-view, #login-view, #contact-view, #cart-view, #listing-space, .description-container {
+header, #start-view, #login-view, #contact-view, #listing-space, .description-container {
     align-items: center;
 }
 
@@ -69,7 +69,10 @@ h2, footer, h3, article li {
 
 .input-container {
     width: 300px;
-    
+}
+
+#name-container {
+    width: 400px;
 }
 
 .check-container {
@@ -82,17 +85,13 @@ h2, footer, h3, article li {
     height: 100px;
 }
 
-#login-view, #contact-view, #cart-view {
+#login-view, #contact-view {
     height: 100vh;
 }
 
-.cart-listing {
-    width: 60%;
-}
 
 
-header, .description-container, .cart-listing > div, .cart-listing,
-.listing {
+header, .description-container, .listing {
     justify-content: space-between;
 }
 
@@ -128,7 +127,7 @@ h1, h2, h3 {
     height: 50px;
 }
 
-.cart-listing h3, .nav-button {
+.nav-button {
     margin-left: 10px;
 }
 
@@ -180,7 +179,7 @@ article ul {
 }
 
 .hidden, #listing-view.hidden, #start-view.hidden, #login-view.hidden,
-#contact-view.hidden, #cart-view.hidden, #product-view.hidden {
+#contact-view.hidden, #product-view.hidden, #error-display.hidden {
     display: none;
 }
 
@@ -196,16 +195,7 @@ button, #contact:hover {
     cursor: pointer;
 }
 
-.cart-listing h3 {
-    text-align: left;
-    margin-right: 10px;
-}
-
-.cart-listing > div {
-    width: 85%;
-}
-
-.cart-listing > div, .listing, button {
+.listing, button {
     border: 0.1em solid white;
 }
 
@@ -237,5 +227,17 @@ nav li {
     padding: 10px;
     border: 0.1em solid white;
     cursor: pointer;
-
   }
+
+#contactsubmit-button, #signup-button {
+   padding: 12px;
+}
+
+input:invalid, textarea:invalid {
+    border: 2px dashed red;
+}
+
+#error-display {
+    text-align: center;
+    font-size: 20pt;
+}
