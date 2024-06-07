@@ -300,7 +300,7 @@
         submitContact();
       }
       else {
-        const errMsg = "First and Last Name Only. Response Required!";
+        const errMsg = "First and Last Name Need to be Capitalized. Comment Required!";
         handleError(errMsg);
       }
     }
@@ -341,7 +341,7 @@
         submitSignUp();
       }
       else {
-        const errMsg = "First and Last Name Only. Response Required!";
+        const errMsg = "First and Last Name Need to be Capitalized. Email and Number Should Be Properly Formatted!";
         handleError(errMsg);
       }
     }
