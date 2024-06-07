@@ -1,7 +1,8 @@
-# CS-132-fp-backend
-CS 132 final project API
+# CS-132 Final Project
+Andy Sun
 
+"npm install" to install dependencies
 
-Collaborators:
-  * Jay Dong
+Back End Collaborators:
   * Andy Sun
+  * Jay Dong
